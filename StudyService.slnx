@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ApplicationStudyService/ApplicationStudyService.csproj" />
+  <Project Path="DomainStudyService/DomainStudyService.csproj" />
+  <Project Path="InfrastructureStudyService/InfrastructureStudyService.csproj" />
+  <Project Path="StudyService/ApiStudyService.csproj" />
+</Solution>

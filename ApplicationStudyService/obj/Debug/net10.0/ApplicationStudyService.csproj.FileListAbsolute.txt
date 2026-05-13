@@ -1,0 +1,12 @@
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\bin\Debug\net10.0\ApplicationStudyService.deps.json
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\bin\Debug\net10.0\ApplicationStudyService.dll
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\bin\Debug\net10.0\ApplicationStudyService.pdb
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\ApplicationStudyService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\ApplicationStudyService.AssemblyInfoInputs.cache
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\ApplicationStudyService.AssemblyInfo.cs
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\ApplicationStudyService.csproj.CoreCompileInputs.cache
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\ApplicationStudyService.sourcelink.json
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\ApplicationStudyService.dll
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\refint\ApplicationStudyService.dll
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\ApplicationStudyService.pdb
+C:\Users\DESKTOP\source\repos\StudyService\ApplicationStudyService\obj\Debug\net10.0\ref\ApplicationStudyService.dll
