@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="ApplicationStudyService/ApplicationStudyService.csproj" />
+  <Project Path="DomainStudyService.Tests/DomainStudyService.Tests.csproj" Id="b54fb2f3-4889-4591-86d1-f463fa81ccac" />
   <Project Path="DomainStudyService/DomainStudyService.csproj" />
   <Project Path="InfrastructureStudyService/InfrastructureStudyService.csproj" />
   <Project Path="StudyService/ApiStudyService.csproj" />
