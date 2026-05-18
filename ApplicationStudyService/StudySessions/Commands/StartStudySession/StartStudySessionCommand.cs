@@ -1,4 +1,4 @@
-namespace ApplicationStudyService.Commands.StartStudySession
+namespace ApplicationStudyService.StudySessions.Commands.StartStudySession
 {
     public class StartStudySessionCommand
     {
