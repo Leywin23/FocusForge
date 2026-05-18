@@ -31,6 +31,7 @@ namespace ApplicationStudyService.StudySessions.Commands.StartStudySession
                 newSession.Title,
                 newSession.StartTime,
                 newSession.Status.DisplayStatus);
+
         }
     }
       

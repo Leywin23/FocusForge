@@ -36,5 +36,10 @@ namespace ApplicationStudyService.Tests.Fakes
 
             return Task.CompletedTask;
         }
+
+        public void AddExistingSession(StudySession session)
+        {
+            _sessions.Add(session);
+        }
     }
 }
