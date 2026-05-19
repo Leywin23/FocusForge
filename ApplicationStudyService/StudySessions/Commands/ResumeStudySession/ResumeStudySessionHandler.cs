@@ -1,20 +1,20 @@
 ﻿using ApplicationStudyService.Common.Interfaces;
 using ApplicationStudyService.StudySessions.Exceptions;
-using DomainStudyService.Statuses;
 
-namespace ApplicationStudyService.StudySessions.Commands.PauseStudySession
+namespace ApplicationStudyService.StudySessions.Commands.ResumeStudySession
 {
-    public class PauseStudySessionHandler
+    public class ResumeStudySessionHandler
     {
         private readonly IStudySessionRepository _studySessionRepository;
         private readonly IDateTimeProvider _dateTimeProvider;
 
-        public PauseStudySessionHandler(IStudySessionRepository studySessionRepository, IDateTimeProvider dateTimeProvider)
+        public ResumeStudySessionHandler(IStudySessionRepository studySessionRepository, IDateTimeProvider dateTimeProvider)
         {
             _studySessionRepository = studySessionRepository;
             _dateTimeProvider = dateTimeProvider;
         }
-        public async Task<PauseStudySessionResult> HandleAsync(PauseStudySessionCommand command, CancellationToken cancellationToken)
+
+        public async Task<ResumeStudySessionResult> HandleAsync(ResumeStudySessionCommand command, CancellationToken cancellationToken)
         {
             var session = await _studySessionRepository.GetByIdAsync(command.SessionId, cancellationToken);
             if (session == null)
@@ -23,15 +23,16 @@ namespace ApplicationStudyService.StudySessions.Commands.PauseStudySession
             if (session.UserId != command.UserId)
                 throw new StudySessionAccessDeniedException(command.SessionId, command.UserId);
 
-            var pausedAtUtc = _dateTimeProvider.UtcNow;
-            session.Pause(pausedAtUtc);
+            var resumedAtUtc = _dateTimeProvider.UtcNow;
+            session.Resume(resumedAtUtc);
 
             await _studySessionRepository.SaveChangesAsync(cancellationToken);
 
-            return new PauseStudySessionResult(
+            return new ResumeStudySessionResult(
                 session.Id,
                 session.UserId,
-                pausedAtUtc,
+                resumedAtUtc,
+                session.TotalPausedSeconds,
                 session.Status.DisplayStatus
                 );
         }

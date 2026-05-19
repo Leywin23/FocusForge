@@ -46,10 +46,8 @@ namespace ApplicationStudyService.Tests.StudySessions.Commands.PauseStudySession
             var repository = new FakeStudySessionRepository();
             var dateTimeProvider = new FakeDateTimeProvider { UtcNow = pausedAtUtc };
 
-
             var handler = new PauseStudySessionHandler(repository, dateTimeProvider);
             var command = new PauseStudySessionCommand(userId, sessionId);
-
 
             await Assert.ThrowsAsync<StudySessionNotFoundException>(
                 () => handler.HandleAsync(command, CancellationToken.None));
