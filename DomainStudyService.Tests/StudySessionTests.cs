@@ -161,6 +161,29 @@ namespace DomainStudyService.Tests
             Assert.Throws<SessionAlreadyCompletedException>(() => session.Finish(finishTime.AddMinutes(1)));
         }
 
+        [Fact]
+        public void GetStudyDurationSeconds_ShouldReturnDurationWithoutPauses()
+        {
+            var startTime = new DateTime(2026, 1, 1, 10, 0, 0, DateTimeKind.Utc);
+            var pauseTime = startTime.AddMinutes(5);
+            var resumeTime = pauseTime.AddMinutes(5);
+            var endTime = resumeTime.AddMinutes(5);
+
+            int totalTime = (int)(endTime - startTime).TotalSeconds;
+
+            var userId = Guid.NewGuid();
+            var topic = "ASP.NET";
+
+
+            var session = StudySession.Start(userId, topic, startTime);
+            session.Pause(pauseTime);
+            session.Resume(resumeTime);
+            session.Finish(endTime);
+
+
+            Assert.Equal(totalTime - session.TotalPausedSeconds, session.GetStudyDurationSeconds());
+        }
+
         private StudySession CreateActiveSession()
         {
             var userId = Guid.NewGuid();

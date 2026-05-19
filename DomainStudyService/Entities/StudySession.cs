@@ -17,6 +17,7 @@ namespace DomainStudyService.Entities
         public DateTime StartTime { get; private set; }
         public DateTime? EndTime { get; private set; }
         public int TotalPausedSeconds { get; private set; }
+        public int TotalStudySeconds { get; private set; }
         public SessionStatus Status { get; private set; } = null!;
 
         public IReadOnlyCollection<PausePeriod> Pauses => _pauses.AsReadOnly();
@@ -61,6 +62,16 @@ namespace DomainStudyService.Entities
 
             EndTime = nowUtc;
             Status = new CompletedStatus();
+        }
+
+        public int GetStudyDurationSeconds()
+        {
+            if (EndTime is null)
+                throw new InvalidOperationException("Session is not completed yet.");
+
+            var totalSessionSeconds = (int)(EndTime.Value - StartTime).TotalSeconds;
+
+            return totalSessionSeconds - TotalPausedSeconds;
         }
 
         private void EnsureIsActive()
