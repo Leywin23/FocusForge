@@ -62,16 +62,9 @@ namespace DomainStudyService.Entities
 
             EndTime = nowUtc;
             Status = new CompletedStatus();
-        }
 
-        public int GetStudyDurationSeconds()
-        {
-            if (EndTime is null)
-                throw new InvalidOperationException("Session is not completed yet.");
-
-            var totalSessionSeconds = (int)(EndTime.Value - StartTime).TotalSeconds;
-
-            return totalSessionSeconds - TotalPausedSeconds;
+            int totalStudySeconds = (int)(EndTime.Value - StartTime).TotalSeconds;
+            TotalStudySeconds = totalStudySeconds - TotalPausedSeconds;
         }
 
         private void EnsureIsActive()

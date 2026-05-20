@@ -3,9 +3,6 @@ using ApplicationStudyService.StudySessions.Exceptions;
 using ApplicationStudyService.Tests.Fakes;
 using DomainStudyService.Entities;
 using DomainStudyService.Statuses;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ApplicationStudyService.Tests.StudySessions.Commands.ResumeStudySession
 {

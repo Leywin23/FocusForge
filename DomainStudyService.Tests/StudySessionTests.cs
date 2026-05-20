@@ -162,7 +162,7 @@ namespace DomainStudyService.Tests
         }
 
         [Fact]
-        public void GetStudyDurationSeconds_ShouldReturnDurationWithoutPauses()
+        public void Finish_ShouldSetTotalStudySeconds()
         {
             var startTime = new DateTime(2026, 1, 1, 10, 0, 0, DateTimeKind.Utc);
             var pauseTime = startTime.AddMinutes(5);
@@ -174,14 +174,12 @@ namespace DomainStudyService.Tests
             var userId = Guid.NewGuid();
             var topic = "ASP.NET";
 
-
             var session = StudySession.Start(userId, topic, startTime);
             session.Pause(pauseTime);
             session.Resume(resumeTime);
             session.Finish(endTime);
 
-
-            Assert.Equal(totalTime - session.TotalPausedSeconds, session.GetStudyDurationSeconds());
+            Assert.Equal(totalTime - session.TotalPausedSeconds, session.TotalStudySeconds);
         }
 
         private StudySession CreateActiveSession()

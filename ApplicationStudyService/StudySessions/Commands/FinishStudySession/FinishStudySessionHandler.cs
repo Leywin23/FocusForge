@@ -35,7 +35,7 @@ namespace ApplicationStudyService.StudySessions.Commands.FinishStudySession
                 session.Id,
                 session.UserId,
                 finishedAtUtc,
-                session.GetStudyDurationSeconds(),
+                session.TotalStudySeconds,
                 session.TotalPausedSeconds,
                 session.Status.DisplayStatus
                 );

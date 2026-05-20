@@ -59,5 +59,6 @@ namespace DomainStudyService.Tests
 
             Assert.Equal(75, pause.GetDurationSeconds());
         }
+
     }
 }

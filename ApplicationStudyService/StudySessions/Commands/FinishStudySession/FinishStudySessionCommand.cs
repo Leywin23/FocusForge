@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ApplicationStudyService.StudySessions.Commands.FinishStudySession
+﻿namespace ApplicationStudyService.StudySessions.Commands.FinishStudySession
 {
     public class FinishStudySessionCommand
     {
-        public Guid SessionId { get; }
         public Guid UserId { get; }
-
-        public FinishStudySessionCommand(Guid sessionId, Guid userId)
+        public Guid SessionId { get; }
+        
+        public FinishStudySessionCommand(Guid userId, Guid sessionId)
         {
-            SessionId = sessionId;
             UserId = userId;
+            SessionId = sessionId;
         }
     }
 }
