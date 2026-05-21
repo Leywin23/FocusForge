@@ -59,11 +59,11 @@ namespace ApplicationStudyService.Tests.StudySessions.Commands.FinishStudySessio
         public async Task HandleAsync_WhenStudySessionDoesntBelongToUser_ThrowsException()
         {
             var userId = Guid.NewGuid();
-            var userId2 = Guid.NewGuid();
+            var anotherUserId = Guid.NewGuid();
             var topic = "Math";
             var startTime = new DateTime(2026, 1, 1, 10, 0, 0, DateTimeKind.Utc);
 
-            var session = StudySession.Start(userId2, topic, startTime);
+            var session = StudySession.Start(anotherUserId, topic, startTime);
 
             var repository = new FakeStudySessionRepository();
             var dateTimeProvider = new FakeDateTimeProvider { UtcNow = DateTime.UtcNow };

@@ -55,5 +55,25 @@ namespace ApplicationStudyService.Tests.StudySessions.Commands.StartStudySession
 
             await Assert.ThrowsAsync<ActiveStudySessionAlreadyExistsException>(() => handler.HandleAsync(command, CancellationToken.None));
         }
+
+        [Fact]
+        public async Task HandleAsync_WhenUserHasPausedSession_ThrowsException()
+        {
+            var userId = Guid.NewGuid();
+            var title = "Math";
+            var nowUtc = new DateTime(2026, 1, 1, 10, 0, 0, DateTimeKind.Utc);
+            var pausedAtUtc = nowUtc.AddMinutes(30);
+            var repository = new FakeStudySessionRepository();
+            var dateTimeProvider = new FakeDateTimeProvider { UtcNow = nowUtc };
+
+            var session = StudySession.Start(userId, title, nowUtc);
+            session.Pause(pausedAtUtc);
+            repository.AddExistingSession(session);
+
+            var handler = new StartStudySessionHandler(repository, dateTimeProvider);
+            var command = new StartStudySessionCommand(userId, title);
+
+            await Assert.ThrowsAsync<ActiveStudySessionAlreadyExistsException>(() => handler.HandleAsync(command, CancellationToken.None));
+        }
     }
 }

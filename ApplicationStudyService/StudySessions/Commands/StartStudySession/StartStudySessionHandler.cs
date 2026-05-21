@@ -17,8 +17,8 @@ namespace ApplicationStudyService.StudySessions.Commands.StartStudySession
 
         public async Task<StartStudySessionResult> HandleAsync(StartStudySessionCommand command, CancellationToken cancellationToken)
         {
-            var activeSession = await _studySessionRepository.GetActiveByUserIdAsync(command.UserId, cancellationToken);
-            if (activeSession != null)
+            var currentSession = await _studySessionRepository.GetCurrentByUserIdAsync(command.UserId, cancellationToken);
+            if (currentSession != null)
                 throw new ActiveStudySessionAlreadyExistsException(command.UserId);
             
             var newSession = StudySession.Start(command.UserId, command.Title, _dateTimeProvider.UtcNow);

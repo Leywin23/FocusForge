@@ -24,9 +24,9 @@ namespace ApplicationStudyService.Tests.Fakes
             return Task.FromResult(session);
         }
 
-        public Task<StudySession?> GetActiveByUserIdAsync(Guid userId, CancellationToken cancellationToken)
+        public Task<StudySession?> GetCurrentByUserIdAsync(Guid userId, CancellationToken cancellationToken)
         {
-            var session = _sessions.FirstOrDefault(s => s.UserId == userId && s.Status is ActiveStatus);
+            var session = _sessions.FirstOrDefault(s => s.UserId == userId && (s.Status is ActiveStatus || s.Status is PausedStatus));
             return Task.FromResult(session);
         }
 

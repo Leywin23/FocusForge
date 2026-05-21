@@ -8,7 +8,7 @@ namespace ApplicationStudyService.Common.Interfaces
 
         Task<StudySession?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 
-        Task<StudySession?> GetActiveByUserIdAsync(Guid userId, CancellationToken cancellationToken);
+        Task<StudySession?> GetCurrentByUserIdAsync(Guid userId, CancellationToken cancellationToken);
 
         Task SaveChangesAsync(CancellationToken cancellationToken);
     }
